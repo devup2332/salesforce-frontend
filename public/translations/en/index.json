@@ -1,0 +1,34 @@
+{
+  "signin": {
+    "title": "Login",
+    "buttons": {
+      "google": "Login with Google",
+      "signIn": "Sign In"
+    },
+    "fields": {
+      "email": {
+        "label": "Email",
+        "placeholder": "email@email.com",
+        "errors": {
+          "too_small": "Email is required",
+          "invalid_string": "Email is invalid"
+        }
+      },
+      "password": {
+        "label": "Password",
+        "placeholder": "Enter your password here",
+        "errors": {
+          "too_small": "Password is required"
+        }
+      }
+    },
+    "or": "Or sign in with email",
+    "links": {
+      "forgotPassword": "Forgot Password?",
+      "createAccount": {
+        "text": "Dont have an account?",
+        "link": "Sign Up"
+      }
+    }
+  }
+}

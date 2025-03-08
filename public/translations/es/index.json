@@ -1,0 +1,34 @@
+{
+  "signin": {
+    "title": "Ingresar",
+    "buttons": {
+      "google": "Ingresar con Google",
+      "signIn": "Ingresar"
+    },
+    "fields": {
+      "email": {
+        "label": "Correo",
+        "placeholder": "correo@correo.com",
+        "errors": {
+          "too_small": "Correo es requerido",
+          "invalid_string": "El correo es inválido"
+        }
+      },
+      "password": {
+        "label": "Contraseña",
+        "placeholder": "Ingresa tu Contraseña",
+        "errors": {
+          "too_small": "Contraseña es requerida"
+        }
+      }
+    },
+    "or": "O ingresa con tu correo",
+    "links": {
+      "forgotPassword": "Olvidaste tu contraseña?",
+      "createAccount": {
+        "text": "No tienes una cuenta?",
+        "link": "Registrate"
+      }
+    }
+  }
+}
