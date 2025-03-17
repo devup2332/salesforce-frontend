@@ -12,6 +12,10 @@
         "link": "Sales Force"
       }
     },
+    "errors": {
+      "invalid_credentials": "Correo o contraseña inválidos",
+      "server_error": "Error del servidor, por favor intenta de nuevo más tarde"
+    },
     "fields": {
       "email": {
         "label": "Correo",
@@ -50,6 +54,10 @@
         "text": "Ya tienes una cuenta?",
         "link": "Ingresar"
       }
+    },
+    "errors": {
+      "invalid_credentials": "Correo o contraseña inválidos",
+      "server_error": "Error del servidor, por favor intenta de nuevo más tarde"
     },
     "sideImage": {
       "description": "Una nueva forma de administrar tu negocio ideal",

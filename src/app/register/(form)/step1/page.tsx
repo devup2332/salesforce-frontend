@@ -9,6 +9,7 @@ import {
 } from "@/schemas/RegisterSchema";
 import { useRegisterStore } from "@/store/RegisterStore";
 import { cn } from "@/utils/cn";
+import { signInWithGoogle } from "@/utils/supabase/signWithOAuth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -58,6 +59,7 @@ const Step1 = () => {
         variant="outlined"
         type="button"
         className="border-1 flex gap-4 w-full border-stroke-1 justify-center items-center h-input hover:bg-bg-2"
+        onClick={() => signInWithGoogle()}
       >
         <GoogleIcon />
         <span className="text-text-2">{t("register.buttons.google")}</span>

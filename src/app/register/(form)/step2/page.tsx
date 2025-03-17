@@ -44,13 +44,14 @@ const Step2Page = () => {
       onSubmit={handleSubmit(nextStepHandler)}
       className="w-10/12 gap-4 flex flex-col xl:max-w-[400px]"
     >
-      <button
-        className="cursor-pointer"
+      <Button
+        className="cursor-pointer hover:bg-bg-2"
         type="button"
+        variant="icon"
         onClick={() => router.back()}
       >
         <ArrowLeft className="w-6 h-6 text-text-1 stroke-current" />
-      </button>
+      </Button>
       <h1 className="text-text-1 text-3xl font-bold">
         {t("register.steps.2.title")}
       </h1>

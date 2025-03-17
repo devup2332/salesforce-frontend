@@ -14,7 +14,7 @@ const icons = {
 
 const Toast: React.FC<ToastProps> = ({ text, type }) => {
   return (
-    <div className="bg-bg-1 px-6 py-4 rounded-xl font-family text-sm shadow-md shadow-black/10 flex flex-1 items-center gap-4">
+    <div className="bg-bg-1 px-6 py-4 rounded-md font-family text-sm shadow-md shadow-black/10 flex flex-1 items-center gap-4">
       {icons[type]}
       {text}
     </div>

@@ -1,5 +1,6 @@
 "use client";
 import FormField from "@/components/general/FormField";
+import Toast from "@/components/general/Toast";
 import ArrowLeft from "@/components/icons/ArrowLeft";
 import EyeClosed from "@/components/icons/EyeClosed";
 import EyeOpen from "@/components/icons/EyeOpen";
@@ -19,7 +20,14 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { Button } from "salesforce-lib";
+import { toast } from "sonner";
 
+type RegisterErrors = "invalid_credentials" | "server_error";
+
+const serverErrors: Record<RegisterErrors, string> = {
+  invalid_credentials: "login.errors.invalid_credentials",
+  server_error: "login.errors.server_error",
+};
 const Step3 = () => {
   const { t } = useTranslation();
   const [loading, setLoading] = useState(false);
@@ -42,7 +50,7 @@ const Step3 = () => {
         ...data,
         password: info.password,
       };
-      const { user } = await fetchApi("/api/register", {
+      const { user } = await fetchApi("/api/auth/register", {
         method: "POST",
         body: JSON.stringify({
           email: body.email,
@@ -54,6 +62,12 @@ const Step3 = () => {
       router.push("/dashboard");
     } catch (err) {
       console.log({ err });
+      toast.custom(
+        () => <Toast type="error" text={t(serverErrors.server_error)} />,
+        {
+          position: "bottom-center",
+        },
+      );
       setLoading(false);
     }
   };
@@ -62,13 +76,14 @@ const Step3 = () => {
       onSubmit={handleSubmit(registerUser)}
       className="grid gap-6 px-6 w-full lg:px-16 lg:gap-4 xl:px-24"
     >
-      <button
-        className="cursor-pointer"
+      <Button
+        className="cursor-pointer hover:bg-bg-2"
         type="button"
+        variant="icon"
         onClick={() => router.back()}
       >
         <ArrowLeft className="w-6 h-6 text-text-1 stroke-current" />
-      </button>
+      </Button>
       <h1 className="text-text-1 text-3xl font-bold w-7/12">
         {t("register.steps.3.title")}
       </h1>

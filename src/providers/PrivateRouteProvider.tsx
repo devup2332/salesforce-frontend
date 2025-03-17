@@ -12,6 +12,7 @@ const PrivateRouteProvider: React.FC<Props> = async ({ children }) => {
   if (!data.user) {
     return redirect("/login");
   }
+
   return children;
 };
 

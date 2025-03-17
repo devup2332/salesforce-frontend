@@ -19,7 +19,7 @@ const RegisterLayout: React.FC<RegisterLayoutProps> = ({ children }) => {
   } = useTranslation();
   const { theme, setTheme } = useTheme();
   return (
-    <div className="grid place-items-center h-screen lg:h-screen">
+    <div className="grid place-items-center bg-bg-1 h-screen lg:h-screen lg:bg-bg-2">
       <div className="w-full lg:bg-bg-1 flex justify-center max-w-md lg:w-11/12 lg:justify-normal lg:overflow-hidden lg:flex-row lg:max-w-5xl lg:h-[640px] 2xl:h-[710px] xl:max-w-[1218px] rounded-xl">
         <div className="hidden lg:block relative w-1/2 rounded-r-6xl overflow-hidden">
           <Image

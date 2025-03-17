@@ -7,7 +7,11 @@ export const POST = async (request: Request) => {
   const user = {
     email: data?.user?.email,
     id: data?.user?.id,
-    full_name: "Diego Rojas",
+    ...(data?.user && { full_name: "Diego Rojas" }),
   };
+
+  if (error) {
+    throw new Error(error.message);
+  }
   return Response.json({ user, error });
 };

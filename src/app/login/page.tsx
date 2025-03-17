@@ -24,14 +24,15 @@ import { toast } from "sonner";
 import Toast from "@/components/general/Toast";
 import { sleep } from "@/utils/sleep";
 import { useAuthStore } from "@/store/AuthStore";
+import { signInWithGoogle } from "@/utils/supabase/signWithOAuth";
 
 const sizeImage = 800;
 
 type LoginErrors = "invalid_credentials" | "server_error";
 
 const serverErrors: Record<LoginErrors, string> = {
-  invalid_credentials: "Invalid email or password",
-  server_error: "Server error, please try again later",
+  invalid_credentials: "login.errors.invalid_credentials",
+  server_error: "login.errors.server_error",
 };
 
 const LoginPage = () => {
@@ -55,7 +56,7 @@ const LoginPage = () => {
   const loginUser = async (credentials: LoginSchemaType) => {
     try {
       setLoading(true);
-      const { user, error } = await fetchApi("/api/login", {
+      const { user, error } = await fetchApi("/api/auth/login", {
         method: "POST",
         body: JSON.stringify(credentials),
       });
@@ -95,9 +96,13 @@ const LoginPage = () => {
       setLoading(false);
     }
   };
+
+  const googleLogin = async () => {
+    await signInWithGoogle();
+  };
   return (
     <>
-      <div className="bg-bg-1 lg:bg-bg-2 text- h-screen grid place-items-center text-sm">
+      <div className="bg-bg-1 lg:bg-bg-2 text- h-screen grid place-items-center text-sm overflow-y-scroll">
         <div className="w-11/12 max-w-md lg:flex lg:flex-row-reverse lg:max-w-5xl xl:max-w-[1218px] rounded-xl overflow-hidden lg:bg-bg-1 lg:h-[600px] 2xl:h-[710px]">
           <div className="hidden lg:flex w-full relative overflow-hidden rounded-l-6xl">
             <Image
@@ -152,6 +157,9 @@ const LoginPage = () => {
                 variant="outlined"
                 type="button"
                 className="border-1 flex gap-4 w-full border-stroke-1 justify-center items-center h-input hover:bg-bg-2"
+                onClick={() => {
+                  googleLogin();
+                }}
               >
                 <GoogleIcon />
                 <span className="text-text-2">{t("login.buttons.google")}</span>
@@ -227,7 +235,7 @@ const LoginPage = () => {
                 type="submit"
                 variant="filled"
                 disabled={loading}
-                className="w-full flex justify-center items-center gap-4 bg-primary-900 text-text-3 font-medium h-input hover:bg-primary-700"
+                className="w-full bg-primary-900 h-input hover:bg-primary-700 gap-4"
               >
                 {loading && (
                   <LoaderIcon className="h-6 w-6 text-text-3 stroke-current animate-spin" />
