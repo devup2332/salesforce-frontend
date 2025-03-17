@@ -1,9 +1,20 @@
 {
-  "signin": {
+  "login": {
     "title": "Login",
     "buttons": {
       "google": "Login with Google",
-      "signIn": "Sign In"
+      "login": "Sign In"
+    },
+    "sideImage": {
+      "description": "A new way to manage your ideal business",
+      "title": {
+        "greeting": "Welcome to",
+        "link": "Sales Force"
+      }
+    },
+    "errors": {
+      "invalid_credentials": "Invalid email or password",
+      "server_error": "Server error, please try again later"
     },
     "fields": {
       "email": {
@@ -28,6 +39,95 @@
       "createAccount": {
         "text": "Dont have an account?",
         "link": "Sign Up"
+      }
+    }
+  },
+  "register": {
+    "title": "Register",
+    "buttons": {
+      "register": "Sign Up",
+      "google": "Sign Up with Google"
+    },
+    "links": {
+      "forgotPassword": "Forgot Password?",
+      "login": {
+        "text": "Do you already have an account ?",
+        "link": "Log In"
+      }
+    },
+    "sideImage": {
+      "description": "A new way to manage your ideal business",
+      "title": {
+        "greeting": "Welcome to",
+        "link": "Sales Force"
+      }
+    },
+    "or": "Or sign up with email",
+    "steps": {
+      "1": {
+        "title": "Register",
+        "textButton": "Next",
+        "fields": {
+          "email": {
+            "label": "Email",
+            "placeholder": "email@email.com",
+            "errors": {
+              "required": "Email is required",
+              "invalid_email": "Email is invalid"
+            }
+          },
+          "firstName": {
+            "label": "First Name",
+            "placeholder": "Enter you first name",
+            "errors": {
+              "required": "First name is required"
+            }
+          },
+          "lastName": {
+            "label": "Last Name",
+            "placeholder": "Enter your last name",
+            "errors": {
+              "required": "Last name is required"
+            }
+          }
+        }
+      },
+      "2": {
+        "title": "Enter yor business name",
+        "textButton": "Next",
+        "fields": {
+          "businessName": {
+            "label": "Business Name",
+            "placeholder": "Enter your business name",
+            "errors": {
+              "required": "Business name is required"
+            }
+          }
+        }
+      },
+      "3": {
+        "title": "Create your password",
+        "textButton": "Register",
+        "fields": {
+          "password": {
+            "label": "Password",
+            "placeholder": "Enter your password here",
+            "errors": {
+              "required": "Password is required",
+              "too_short": "Password must be at least 8 characters long"
+            }
+          },
+          "confirmPassword": {
+            "label": "Confirm Password",
+            "placeholder": "Repeat your password",
+            "errors": {
+              "required": "Password is required",
+              "too_short": "Password must be at least 8 characters long",
+              "not_matching": "Passwords do not match"
+            }
+          }
+        },
+        "too_short_message": "* Password must be at least 8 characters long"
       }
     }
   }

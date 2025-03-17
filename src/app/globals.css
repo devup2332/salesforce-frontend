@@ -22,12 +22,26 @@
   --color-bg-3: var(--bg-3);
 
   --color-stroke-1: var(--stroke-1);
-  --color-stroke-2: var(--stroke-1);
+  --color-stroke-2: var(--stroke-2);
 
   --text-3xl: 32px;
   --spacing-input: 42px;
+  --radius-6xl: 48px;
+}
+
+html {
+  background-color: var(--bg-1) !important;
 }
 
 input {
   outline: none;
+}
+
+button {
+  outline: none;
+}
+
+.customScroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--stroke-1) var(--bg-2);
 }

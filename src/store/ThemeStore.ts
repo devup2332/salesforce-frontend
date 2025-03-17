@@ -14,6 +14,7 @@ export const useTheme = create<ThemeStore>((set) => ({
   setTheme: (theme: Theme) => {
     if (!theme) return set({ theme: undefined });
     document.documentElement.classList.remove("dark", "light");
+    localStorage.setItem(THEME_KEY, theme);
     document.documentElement.classList.add(theme);
     return set({ theme });
   },

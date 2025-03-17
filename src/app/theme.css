@@ -28,7 +28,7 @@
   --dark-success: #137919;
   --dark-warning: #d69200;
 
-  --dark-text-1: #000000;
+  --dark-text-1: #ffffff;
   --dark-text-2: #7a82a7;
   --dark-text-3: #ffffff;
 
@@ -36,8 +36,8 @@
   --dark-bg-2: #0b0c0f;
   --dark-bg-3: rgba(0, 0, 0, 0.5);
 
-  --dark-stroke-1: #d9ddef;
-  --dark-stroke-2: #e2e5f1;
+  --dark-stroke-1: #434b57;
+  --dark-stroke-2: #23272d;
 }
 
 html.light {
@@ -59,6 +59,7 @@ html.light {
 
   --stroke-1: var(--light-stroke-1);
   --stroke-2: var(--light-stroke-2);
+  color-scheme: light;
 }
 
 html.dark {
@@ -80,4 +81,5 @@ html.dark {
 
   --stroke-1: var(--dark-stroke-1);
   --stroke-2: var(--dark-stroke-2);
+  color-scheme: dark;
 }

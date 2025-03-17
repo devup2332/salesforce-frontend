@@ -1,9 +1,16 @@
 {
-  "signin": {
+  "login": {
     "title": "Ingresar",
     "buttons": {
       "google": "Ingresar con Google",
-      "signIn": "Ingresar"
+      "login": "Ingresar"
+    },
+    "sideImage": {
+      "description": "Una nueva forma de administrar tu negocio ideal",
+      "title": {
+        "greeting": "Bienvenido a",
+        "link": "Sales Force"
+      }
     },
     "fields": {
       "email": {
@@ -28,6 +35,95 @@
       "createAccount": {
         "text": "No tienes una cuenta?",
         "link": "Registrate"
+      }
+    }
+  },
+  "register": {
+    "title": "Registrarse",
+    "buttons": {
+      "signUp": "Registrarse",
+      "google": "Registrarse con Google"
+    },
+    "links": {
+      "forgotPassword": "Olvidaste tu contraseña?",
+      "login": {
+        "text": "Ya tienes una cuenta?",
+        "link": "Ingresar"
+      }
+    },
+    "sideImage": {
+      "description": "Una nueva forma de administrar tu negocio ideal",
+      "title": {
+        "greeting": "Bienvenido a",
+        "link": "Sales Force"
+      }
+    },
+    "or": "O registrate con tu correo",
+    "steps": {
+      "1": {
+        "title": "Registrate",
+        "textButton": "Siguiente",
+        "fields": {
+          "email": {
+            "label": "Correo",
+            "placeholder": "correo@correo.com",
+            "errors": {
+              "required": "Correo es requerido",
+              "invalid_email": "El correo es inválido"
+            }
+          },
+          "firstName": {
+            "label": "Nombre",
+            "placeholder": "Ingresa tu nombre",
+            "errors": {
+              "required": "El nombre es requerido"
+            }
+          },
+          "lastName": {
+            "label": "Apellido",
+            "placeholder": "Ingresa tu apellido",
+            "errors": {
+              "required": "El apellido es requerido"
+            }
+          }
+        }
+      },
+      "2": {
+        "title": "Ingresa el nombre de tu empresa",
+        "textButton": "Siguiente",
+        "fields": {
+          "businessName": {
+            "label": "Nombre de la empresa",
+            "placeholder": "Ingresa el nombre de tu empresa",
+            "errors": {
+              "required": "Nombre de la empresa es requerido"
+            }
+          }
+        }
+      },
+      "3": {
+        "title": "Crea tu contraseña",
+        "textButton": "Registrarse",
+        "fields": {
+          "password": {
+            "label": "Contraseña",
+            "placeholder": "Ingresa tu contraseña",
+            "errors": {
+              "required": "La contraseña es requerida",
+              "too_short": "Contraseña muy corta"
+            }
+          },
+          "confirmPassword": {
+            "label": "Confirma tu contraseña",
+            "placeholder": "Ingresa denuevo tu contraseña",
+            "errors": {
+              "required": "Confirma la contraseña",
+              "too_short": "Contraseña muy corta",
+              "not_matching": "Las contraseñas no coinciden"
+            }
+          }
+        },
+        "too_short_message": "* La contraseña debe tener al menos 8 caracteres"
       }
     }
   }
