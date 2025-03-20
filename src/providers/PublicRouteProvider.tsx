@@ -20,11 +20,10 @@ const PublicRouteProvider: React.FC<Props> = ({ children }) => {
     const {
       data: { session },
     } = await supabase.auth.getSession();
-    console.log({ session });
+    setLoading(false);
     if (session) {
       setSession(session);
 
-      setLoading(false);
       return router.push("/dashboard");
     }
   };
