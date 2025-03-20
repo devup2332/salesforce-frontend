@@ -15,7 +15,7 @@ const Layout: React.FC<Props> = ({ children }) => {
         <Sidebar />
         <div className="flex flex-col flex-1 bg-bg-2">
           <Header />
-          {children}
+          <div className="px-8 py-6">{children}</div>
         </div>
       </div>
     </PrivateRouteProvider>

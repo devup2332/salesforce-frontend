@@ -109,13 +109,13 @@ const Sidebar = () => {
   return (
     <div
       className={cn(
-        "w-full flex transition-all fixed top-0 sm:relative sm:w-fit",
+        "w-full flex transition-all fixed z-10 top-0 sm:relative sm:w-fit",
         isOpen ? (isPhone ? "bg-bg-3" : "bg-none") : "w-[0px]",
       )}
     >
       <div
         className={cn(
-          "bg-bg-1 h-screen  overflow-x-hidden transition-all",
+          "bg-bg-1 h-screen  overflow-x-hidden transition-all customScroll",
           isOpen ? "w-[288px]" : isPhone ? "w-0" : "w-[68px]",
         )}
       >
@@ -145,7 +145,7 @@ const Sidebar = () => {
                       <li key={index}>
                         <Link
                           className={cn(
-                            "text-text-1 rounded-md flex items-center gap-6 py-[10px] font-medium px-2 justify-start hover:text-text-3",
+                            "text-text-1 text-sm rounded-md flex items-center gap-6 py-[10px] font-medium px-2 justify-start hover:text-text-3",
                             pathname === opt.href
                               ? "bg-bg-2 text-primary-900"
                               : "text-text-2",

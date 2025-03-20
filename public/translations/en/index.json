@@ -185,6 +185,30 @@
     },
     "header": {
       "welcomeMessage": "Welcome back"
+    },
+    "dashboard": {
+      "cards": {
+        "orders": {
+          "title": "Pending Orders",
+          "description": "You have a lot of pending invoices to review",
+          "button": "Review"
+        },
+        "users": {
+          "title": "Active Users",
+          "description": "Number of users that you have in your team",
+          "button": "Review"
+        },
+        "reports": {
+          "title": "Total Reports",
+          "description": "Mount of reports generated in the last month",
+          "button": "Review"
+        },
+        "items": {
+          "title": "Total Items",
+          "description": "Items that you have storage in your inventory",
+          "button": "Review"
+        }
+      }
     }
   }
 }

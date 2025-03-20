@@ -1,6 +1,5 @@
 "use client";
 import Loader from "@/components/general/Loader";
-import { sleep } from "@/utils/sleep";
 import { createClient } from "@/utils/supabase/client";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
@@ -21,7 +20,7 @@ const PublicRouteProvider: React.FC<Props> = ({ children }) => {
     const {
       data: { session },
     } = await supabase.auth.getSession();
-    await sleep(3000);
+    console.log({ session });
     if (session) {
       setSession(session);
 

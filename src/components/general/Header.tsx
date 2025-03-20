@@ -21,55 +21,57 @@ const Header = () => {
   const { user } = useAuthStore();
   const { t } = useTranslation();
   return (
-    <div className="text-text-1 h-24 flex justify-between items-center px-8 bg-bg-1 transition-all">
-      <div className="flex items-center gap-3">
-        <Button
-          variant="icon"
-          className="hover:bg-bg-2"
-          onClick={() => toggleSidebar()}
-        >
-          {isOpenSidebar ? (
-            <OpenSidebarIcon className="h-5 w-5 text-text-1 stroke-current" />
-          ) : (
-            <CloseSidebarIcon className="h-5 w-5 text-text-1 stroke-current" />
-          )}
-        </Button>
-        <div className="flex flex-col gap-2">
-          <h2 className="text-text-1 text-xl">
-            {t("home.header.welcomeMessage")}{" "}
-            <span className="font-bold">{user?.full_name}</span>
-          </h2>
-          <p className="text-text-2 text-sm">Monday, October 23,2024</p>
-        </div>
-      </div>
-
-      <div className="flex items-center gap-6">
-        <Button
-          variant="icon"
-          className="hover:bg-bg-2"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          {theme === "dark" ? (
-            <MoonIcon className="h-5 w-5 text-text-2 stroke-current" />
-          ) : (
-            <SunIcon className="h-5 w-5 text-text-2 stroke-current" />
-          )}
-        </Button>
-        <Button variant="icon" className="hover:bg-bg-2 relative">
-          <div className="relative">
-            <BellIcon className="h-5 w-5 text-text-2 stroke-current" />
-            {hasNotifications && (
-              <div className="bg-alert rounded-full h-2 w-2 absolute bottom-0 right-0" />
+    <div className="h-24 flex w-full items-center px-8 bg-bg-1 transition-all">
+      <div className="max-w-8xl w-full m-auto text-text-1 flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <Button
+            variant="icon"
+            className="hover:bg-bg-2"
+            onClick={() => toggleSidebar()}
+          >
+            {isOpenSidebar ? (
+              <OpenSidebarIcon className="h-5 w-5 text-text-1 stroke-current" />
+            ) : (
+              <CloseSidebarIcon className="h-5 w-5 text-text-1 stroke-current" />
             )}
+          </Button>
+          <div className="flex-col gap-2 hidden lg:flex">
+            <h2 className="text-text-1 text-xl">
+              {t("home.header.welcomeMessage")}{" "}
+              <span className="font-bold">{user?.full_name}</span>
+            </h2>
+            <p className="text-text-2 text-sm">Monday, October 23,2024</p>
           </div>
-        </Button>
-        <Image
-          src={userUrl}
-          alt="User Image"
-          width={40}
-          height={40}
-          className="rounded-full cursor-pointer"
-        />
+        </div>
+
+        <div className="flex items-center gap-6">
+          <Button
+            variant="icon"
+            className="hover:bg-bg-2"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+          >
+            {theme === "dark" ? (
+              <MoonIcon className="h-5 w-5 text-text-1 stroke-current" />
+            ) : (
+              <SunIcon className="h-5 w-5 text-text-1 stroke-current" />
+            )}
+          </Button>
+          <Button variant="icon" className="hover:bg-bg-2 relative">
+            <div className="relative">
+              <BellIcon className="h-5 w-5 text-text-1 stroke-current" />
+              {hasNotifications && (
+                <div className="bg-alert rounded-full h-2 w-2 absolute bottom-0 right-0" />
+              )}
+            </div>
+          </Button>
+          <Image
+            src={userUrl}
+            alt="User Image"
+            width={40}
+            height={40}
+            className="rounded-full cursor-pointer"
+          />
+        </div>
       </div>
     </div>
   );

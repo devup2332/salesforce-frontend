@@ -1,16 +1,16 @@
 :root {
   /* Light theme */
-  --light-primary-100: #ebf1ff;
+  --light-primary-100: #f4f4f4;
   --light-primary-700: #688aff;
-  --light-primary-900: #4867ff;
+  --light-primary-900: #235ef0;
 
   --light-alert: #f64444;
   --light-success: #2db637;
   --light-warning: #ffb10a;
 
   --light-text-1: #000000;
-  --light-text-2: #7a82a7;
-  --light-text-3: #ffffff;
+  --light-text-2: #6d758a;
+  --light-text-3: #000000;
 
   --light-bg-1: #ffffff;
   --light-bg-2: #f1f2f8;
@@ -20,20 +20,20 @@
   --light-stroke-2: #e2e5f1;
 
   /* Dark theme */
-  --dark-primary-100: #ebf1ff;
-  --dark-primary-700: #688aff;
-  --dark-primary-900: #4867ff;
+  --dark-primary-100: #edf2ff;
+  --dark-primary-700: #92b2ff;
+  --dark-primary-900: #0037bf;
 
   --dark-alert: #ef1b1b;
   --dark-success: #137919;
   --dark-warning: #d69200;
 
   --dark-text-1: #ffffff;
-  --dark-text-2: #7a82a7;
+  --dark-text-2: #959ab4;
   --dark-text-3: #ffffff;
 
-  --dark-bg-1: #14171b;
-  --dark-bg-2: #0b0c0f;
+  --dark-bg-1: #121317;
+  --dark-bg-2: #080809;
   --dark-bg-3: rgba(0, 0, 0, 0.5);
 
   --dark-stroke-1: #434b57;

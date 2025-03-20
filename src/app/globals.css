@@ -26,6 +26,9 @@
   --text-3xl: 32px;
   --spacing-input: 42px;
   --radius-6xl: 48px;
+
+  --breakpoint-3xl: 1728px;
+  --spacing-8xl: 1500px;
 }
 
 input {
