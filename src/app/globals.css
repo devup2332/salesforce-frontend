@@ -38,5 +38,5 @@ button {
 
 .customScroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--stroke-1) var(--bg-2);
+  scrollbar-color: var(--stroke-1) var(--bg-1);
 }

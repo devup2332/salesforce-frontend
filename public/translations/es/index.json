@@ -134,5 +134,58 @@
         "too_short_message": "* La contraseña debe tener al menos 8 caracteres"
       }
     }
+  },
+  "home": {
+    "sidebar": {
+      "logo": {
+        "title": "Sales Force",
+        "subtitle": "Administrador de ventas"
+      },
+      "sections": {
+        "menu": {
+          "title": "Menu",
+          "options": {
+            "dashboard": {
+              "title": "Panel de control"
+            },
+            "inventory": {
+              "title": "Inventario"
+            },
+            "categories": {
+              "title": "Categorias"
+            },
+            "sales": {
+              "title": "Ventas"
+            },
+            "customers": {
+              "title": "Clientes"
+            },
+            "invoices": {
+              "title": "Facturas"
+            },
+            "profile": {
+              "title": "Perfil"
+            }
+          }
+        },
+        "admin": {
+          "title": "Administrador",
+          "options": {
+            "team": {
+              "title": "Equipo"
+            },
+            "reports": {
+              "title": "Reportes"
+            },
+            "analytics": {
+              "title": "Analiticas"
+            },
+            "settings": {
+              "title": "Configuraciones"
+            }
+          }
+        }
+      }
+    }
   }
 }

@@ -22,7 +22,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={cn(montserrat.className, "bg-bg-1 lg:bg-bg-2")}>
+    <html
+      lang="en"
+      className={cn(montserrat.className, "bg-bg-1 lg:bg-bg-2 customScroll")}
+    >
       <body>
         <TranslationProvider>
           <ThemeProvider>

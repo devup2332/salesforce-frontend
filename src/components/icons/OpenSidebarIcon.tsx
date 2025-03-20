@@ -1,24 +1,23 @@
 import { SvgProps } from "@/types/components/SvgProps";
 import React from "react";
 
-const MoonIcon: React.FC<SvgProps> = (props) => {
+const OpenSidebarIcon: React.FC<SvgProps> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"
       height="24"
       viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      fill="currentColor"
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z" />
+      <path
+        d="M6 21a3 3 0 0 1 -3 -3v-12a3 3 0 0 1 3 -3h12a3 3 0 0 1 3 3v12a3 3 0 0 1 -3 3zm12 -16h-8v14h8a1 1 0 0 0 1 -1v-12a1 1 0 0 0 -1 -1"
+        strokeWidth="0.1"
+      />
     </svg>
   );
 };
 
-export default MoonIcon;
+export default OpenSidebarIcon;

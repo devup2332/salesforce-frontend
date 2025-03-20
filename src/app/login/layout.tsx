@@ -5,8 +5,8 @@ type Props = {
   children: React.ReactNode;
 };
 
-const Layout: React.FC<Props> = ({ children }) => {
+const LoginLayout: React.FC<Props> = ({ children }) => {
   return <PublicRouteProvider>{children}</PublicRouteProvider>;
 };
 
-export default Layout;
+export default LoginLayout;

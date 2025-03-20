@@ -130,5 +130,61 @@
         "too_short_message": "* Password must be at least 8 characters long"
       }
     }
+  },
+  "home": {
+    "sidebar": {
+      "logo": {
+        "title": "Sales Force",
+        "subtitle": "Sales app administration"
+      },
+      "sections": {
+        "menu": {
+          "title": "Menu",
+          "options": {
+            "dashboard": {
+              "title": "Dashboard"
+            },
+            "inventory": {
+              "title": "Inventory"
+            },
+            "categories": {
+              "title": "Categories"
+            },
+            "sales": {
+              "title": "Sales"
+            },
+            "customers": {
+              "title": "Customers"
+            },
+            "invoices": {
+              "title": "Invoices"
+            },
+            "profile": {
+              "title": "Profile"
+            }
+          }
+        },
+        "admin": {
+          "title": "Admin",
+          "options": {
+            "team": {
+              "title": "Team"
+            },
+            "reports": {
+              "title": "Reports"
+            },
+            "analytics": {
+              "title": "Analytics"
+            },
+            "settings": {
+              "title": "Settings"
+            }
+          }
+        }
+      }
+    },
+    "header": {
+      "welcomeMessage": "Welcome back"
+    }
   }
 }

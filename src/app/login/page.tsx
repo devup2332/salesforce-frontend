@@ -77,9 +77,6 @@ const LoginPage = () => {
         setLoading(false);
         return;
       }
-      console.log({
-        loginUser: user,
-      });
       setUser(user);
       setLoading(false);
 
@@ -100,6 +97,7 @@ const LoginPage = () => {
   const googleLogin = async () => {
     await signInWithGoogle();
   };
+
   return (
     <>
       <div className="bg-bg-1 lg:bg-bg-2 text- h-screen grid place-items-center text-sm overflow-y-scroll">

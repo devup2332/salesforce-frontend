@@ -15,7 +15,6 @@ const AuthProvider: React.FC<Props> = ({ children }) => {
     const {
       data: { user },
     } = await supabase.auth.getUser();
-    console.log({ user });
     if (user) {
       setUser({
         email: user.email!,

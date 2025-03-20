@@ -1,7 +1,7 @@
 import { SvgProps } from "@/types/components/SvgProps";
 import React from "react";
 
-const SunIcon: React.FC<SvgProps> = (props) => {
+const BellIcon: React.FC<SvgProps> = (props) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -16,10 +16,10 @@ const SunIcon: React.FC<SvgProps> = (props) => {
       {...props}
     >
       <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-      <path d="M12 12m-4 0a4 4 0 1 0 8 0a4 4 0 1 0 -8 0" />
-      <path d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7" />
+      <path d="M10 5a2 2 0 1 1 4 0a7 7 0 0 1 4 6v3a4 4 0 0 0 2 3h-16a4 4 0 0 0 2 -3v-3a7 7 0 0 1 4 -6" />
+      <path d="M9 17v1a3 3 0 0 0 6 0v-1" />
     </svg>
   );
 };
 
-export default SunIcon;
+export default BellIcon;
