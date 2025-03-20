@@ -6,6 +6,7 @@ import { Provider } from "@supabase/supabase-js";
 const signInWithOAuth = async (provider: Provider) => {
   const supabase = createClient();
   const redirectUrl = `${env.APP_URL}/api/auth/callback`;
+  console.log({ redirectUrl });
   supabase.auth.signInWithOAuth({
     provider,
     options: {
