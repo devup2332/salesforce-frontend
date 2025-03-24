@@ -21,7 +21,7 @@ const Header = () => {
   const { user } = useAuthStore();
   const { t } = useTranslation();
   return (
-    <div className="h-24 flex w-full items-center px-8 bg-bg-1 transition-all">
+    <div className="h-14 sm:h-18 lg:h-24 shrink-0 flex w-full items-center px-8 bg-bg-1">
       <div className="max-w-8xl w-full m-auto text-text-1 flex justify-between items-center">
         <div className="flex items-center gap-3">
           <Button

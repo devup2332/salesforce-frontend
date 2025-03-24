@@ -1,5 +1,6 @@
 "use client";
-import Card from "@/components/general/Card";
+import CardDashboard from "@/components/Dashboard/CardDashboard";
+import CardTopProducts from "@/components/Dashboard/CardTopProducts";
 import SalesIcon from "@/components/icons/SalesIcon";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -7,9 +8,9 @@ import { useTranslation } from "react-i18next";
 const DashboardPage = () => {
   const { t } = useTranslation();
   return (
-    <div className="max-w-8xl m-auto">
+    <div className="max-w-8xl m-auto flex-1 grid gap-4">
       <div className="grid sm:grid-cols-2 gap-4 lg:grid-cols-4">
-        <Card
+        <CardDashboard
           className="hover:bg-primary-900"
           amount={34}
           textButton={t("home.dashboard.cards.orders.button")}
@@ -17,7 +18,7 @@ const DashboardPage = () => {
           Icon={SalesIcon}
           title={t("home.dashboard.cards.orders.title")}
         />
-        <Card
+        <CardDashboard
           className="hover:bg-primary-900"
           amount={12}
           textButton={t("home.dashboard.cards.users.button")}
@@ -25,7 +26,7 @@ const DashboardPage = () => {
           Icon={SalesIcon}
           title={t("home.dashboard.cards.users.title")}
         />
-        <Card
+        <CardDashboard
           className="hover:bg-primary-900"
           amount={90}
           textButton={t("home.dashboard.cards.reports.button")}
@@ -33,7 +34,7 @@ const DashboardPage = () => {
           Icon={SalesIcon}
           title={t("home.dashboard.cards.reports.title")}
         />
-        <Card
+        <CardDashboard
           className="hover:bg-primary-900"
           amount={320}
           textButton={t("home.dashboard.cards.items.button")}
@@ -41,6 +42,10 @@ const DashboardPage = () => {
           Icon={SalesIcon}
           title={t("home.dashboard.cards.items.title")}
         />
+      </div>
+
+      <div className="grid md:grid-cols-2">
+        <CardTopProducts />
       </div>
     </div>
   );

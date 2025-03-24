@@ -11,9 +11,9 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <PrivateRouteProvider>
-      <div className="flex transition-all">
+      <div className="flex bg-bg-2 flex-1 h-screen">
         <Sidebar />
-        <div className="flex flex-col flex-1 bg-bg-2">
+        <div className="flex flex-col w-full h-full overflow-y-scroll sm:pl-[68px]">
           <Header />
           <div className="px-8 py-6">{children}</div>
         </div>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import DashboardIcon from "@/components/icons/DashboardIcon";
 import SettingsIcon from "@/components/icons/SettingsIcon";
 import CategoriesIcon from "@/components/icons/CategoriesIcon";
@@ -103,19 +103,14 @@ const Sidebar = () => {
   const { t } = useTranslation();
   const pathname = usePathname();
   const { isOpen, toggleSidebar } = useSidebarStore();
+  const divReef = useRef<HTMLDivElement | null>(null);
   const isPhone = useMediaQuery("(max-width: 640px)");
 
-  const handleSidebar = () => toggleSidebar();
   return (
-    <div
-      className={cn(
-        "w-full flex transition-all fixed z-10 top-0 sm:relative sm:w-fit",
-        isOpen ? (isPhone ? "bg-bg-3" : "bg-none") : "w-[0px]",
-      )}
-    >
+    <div>
       <div
         className={cn(
-          "bg-bg-1 h-screen  overflow-x-hidden transition-all customScroll",
+          "bg-bg-1 h-screen fixed top-0 left-0 z-20  overflow-x-hidden transition-[width] customScroll ",
           isOpen ? "w-[288px]" : isPhone ? "w-0" : "w-[68px]",
         )}
       >
@@ -164,7 +159,17 @@ const Sidebar = () => {
           })}
         </div>
       </div>
-      {isPhone && <div className="flex-1" onClick={() => handleSidebar()} />}
+      <div
+        className={cn(
+          "fixed top-0 left-0 w-full h-screen bg-bg-3 opacity-0 transition-opacity",
+          isOpen && "opacity-100 z-10",
+        )}
+        ref={divReef}
+        onTransitionEnd={() =>
+          !isOpen && divReef.current?.classList.add("-z-20")
+        }
+        onClick={toggleSidebar}
+      />
     </div>
   );
 };

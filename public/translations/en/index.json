@@ -207,6 +207,9 @@
           "title": "Total Items",
           "description": "Items that you have storage in your inventory",
           "button": "Review"
+        },
+        "topProducts": {
+          "title": "Top Products"
         }
       }
     }

@@ -1,3 +1,5 @@
+import "salesforce-lib/dist/index.css";
+import "./globals.css";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import TranslationProvider from "@/providers/TranslationProvider";
@@ -5,8 +7,6 @@ import ThemeProvider from "@/providers/ThemeProvider";
 import { Toaster } from "sonner";
 import AuthProvider from "@/providers/AuthProvider";
 import { cn } from "@/utils/cn";
-import "salesforce-lib/dist/index.css";
-import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin"],

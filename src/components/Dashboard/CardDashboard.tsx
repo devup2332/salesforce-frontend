@@ -11,7 +11,7 @@ interface Props extends ComponentProps<"div"> {
   amount: number;
 }
 
-const Card: React.FC<Props> = ({
+const CardDashboard: React.FC<Props> = ({
   className,
   textButton,
   Icon,
@@ -23,7 +23,7 @@ const Card: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "rounded-md bg-bg-1 py-3 px-4 grid gap-3 group transition-all cursor-pointer",
+        "rounded-md bg-bg-1 py-3 px-4 grid gap-3 group hover:transition-colors cursor-pointer",
         className,
       )}
       {...rest}
@@ -35,7 +35,7 @@ const Card: React.FC<Props> = ({
 
         <Button
           variant="icon"
-          className="bg-bg-2 rounded-full w-10 h-10 group-hover:bg-white"
+          className="bg-bg-2 rounded-full w-10 h-10 group-hover:bg-white transition-none group-hover:transition"
         >
           <Icon className="w-4 h-4 group-hover:text-primary-900" />
         </Button>
@@ -43,10 +43,12 @@ const Card: React.FC<Props> = ({
       <span className="text-[40px] text-text-1 font-extrabold group-hover:text-white">
         {amount}
       </span>
-      <p className="group-hover:text-white text-xs">{textDescription}</p>
+      <p className="group-hover:text-white text-xs transition-none">
+        {textDescription}
+      </p>
       <Button
         variant="filled"
-        className="w-full text-sm h-input bg-bg-2 text-text-1 group-hover:text-primary-900 group-hover:bg-white"
+        className="w-full text-sm h-input bg-bg-2 text-text-1 group-hover:text-primary-900 group-hover:bg-white transition-none group-hover:transition"
       >
         {textButton}
       </Button>
@@ -54,4 +56,4 @@ const Card: React.FC<Props> = ({
   );
 };
 
-export default Card;
+export default CardDashboard;
