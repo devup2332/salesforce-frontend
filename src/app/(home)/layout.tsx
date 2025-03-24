@@ -13,7 +13,7 @@ const Layout: React.FC<Props> = ({ children }) => {
     <PrivateRouteProvider>
       <div className="flex bg-bg-2 flex-1 h-screen">
         <Sidebar />
-        <div className="flex flex-col w-full h-full overflow-y-scroll sm:pl-[68px]">
+        <div className="flex flex-col w-full h-full overflow-y-auto sm:pl-[68px]">
           <Header />
           <div className="px-8 py-6">{children}</div>
         </div>

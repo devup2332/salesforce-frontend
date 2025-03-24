@@ -1,6 +1,7 @@
 "use client";
 import CardDashboard from "@/components/Dashboard/CardDashboard";
 import CardTopProducts from "@/components/Dashboard/CardTopProducts";
+import ChartDashboard from "@/components/Dashboard/ChartDashboard";
 import SalesIcon from "@/components/icons/SalesIcon";
 import React from "react";
 import { useTranslation } from "react-i18next";
@@ -44,8 +45,9 @@ const DashboardPage = () => {
         />
       </div>
 
-      <div className="grid md:grid-cols-2">
+      <div className="grid md:grid-cols-2 gap-4">
         <CardTopProducts />
+        <ChartDashboard />
       </div>
     </div>
   );

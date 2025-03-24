@@ -49,7 +49,7 @@ const data: Product[] = [
 const CardTopProducts = () => {
   const { t } = useTranslation();
   return (
-    <div className="bg-bg-1 py-3 px-4">
+    <div className="bg-bg-1 py-3 px-4 rounded-md">
       <div className="flex justify-between items-center ">
         <h1>{t("home.dashboard.cards.topProducts.title")}</h1>
         <Button variant="icon" className="hover:bg-bg-2 rounded-full">
