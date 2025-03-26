@@ -49,17 +49,22 @@ const data: Product[] = [
 const CardTopProducts = () => {
   const { t } = useTranslation();
   return (
-    <div className="bg-bg-1 py-3 px-4 rounded-md">
-      <div className="flex justify-between items-center ">
-        <h1>{t("home.dashboard.cards.topProducts.title")}</h1>
+    <div className="bg-bg-1 py-3 rounded-md">
+      <div className="flex px-4 justify-between items-center ">
+        <h1 className="text-lg font-medium text-text-1">
+          {t("home.dashboard.cards.topProducts.title")}
+        </h1>
         <Button variant="icon" className="hover:bg-bg-2 rounded-full">
           <ArrowTopRightIcon className="h-5 w-5" />
         </Button>
       </div>
-      <div className="grid gap-4 mt-4">
+      <div className="grid mt-4">
         {data.map(({ name, price, category, imageUrl, currency }) => {
           return (
-            <div key={name} className="flex items-center justify-between">
+            <div
+              key={name}
+              className="flex px-4 py-2 cursor-pointer rounded-md hover:bg-bg-2 items-center justify-between"
+            >
               <div className="flex gap-4 items-start">
                 <Image
                   src={imageUrl}
@@ -73,9 +78,9 @@ const CardTopProducts = () => {
                   <p className="text-xs">{category}</p>
                 </div>
               </div>
-              <div className="flex gap-2 font-medium">
-                <span> {currency}</span>
-                <span> {price}</span>
+              <div className="flex gap-2 font-medium transition-none">
+                <span className="transition-none"> {currency}</span>
+                <span className="transition-none"> {price}</span>
               </div>
             </div>
           );

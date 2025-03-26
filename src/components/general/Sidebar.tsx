@@ -18,6 +18,8 @@ import { cn } from "@/utils/cn";
 import { useSidebarStore } from "@/store/SidebarStore";
 import LogoIcon from "../icons/LogoIcon";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+import CloseIcon from "../icons/CloseIcon";
+import { Button } from "salesforce-lib";
 
 type SidebarItem = {
   title: string;
@@ -115,16 +117,25 @@ const Sidebar = () => {
         )}
       >
         <div className="px-4 py-4">
-          <div className="flex gap-6 items-center px-2 mb-6 w-[256px]">
-            <LogoIcon className="text-primary-900 stroke-current w-6 h-6" />
-            <div>
-              <p className="text-2xl text-primary-900 font-bold">
-                {t("home.sidebar.logo.title")}
-              </p>
-              <p className="text-[10px] text-text-2">
-                {t("home.sidebar.logo.subtitle")}
-              </p>
+          <div className="flex gap-2 items-center justify-between px-2 mb-6 w-[256px]">
+            <div className="flex gap-6 items-center">
+              <LogoIcon className="text-primary-900 stroke-current w-6 h-6" />
+              <div>
+                <p className="text-2xl text-primary-900 font-bold">
+                  {t("home.sidebar.logo.title")}
+                </p>
+                <p className="text-[10px] text-text-2">
+                  {t("home.sidebar.logo.subtitle")}
+                </p>
+              </div>
             </div>
+            <Button
+              variant="icon"
+              onClick={toggleSidebar}
+              className="hover:bg-bg-2"
+            >
+              <CloseIcon className="h-5 w-5 text-text-1 stroke-current" />
+            </Button>
           </div>
           {sidebarItems.map((section, i) => {
             return (
@@ -161,7 +172,7 @@ const Sidebar = () => {
       </div>
       <div
         className={cn(
-          "fixed top-0 left-0 w-full h-screen bg-bg-3 opacity-0 transition-opacity",
+          "fixed top-0 left-0 w-full h-screen bg-bg-3 opacity-0 transition-opacity -z-20",
           isOpen && "opacity-100 z-10",
         )}
         ref={divReef}

@@ -210,6 +210,12 @@
         },
         "topProducts": {
           "title": "Top Products"
+        },
+        "salesOverview": {
+          "title": "Sales Overview"
+        },
+        "lastUsers": {
+          "title": "Last Users"
         }
       }
     }

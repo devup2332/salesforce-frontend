@@ -1,5 +1,6 @@
 "use client";
 import CardDashboard from "@/components/Dashboard/CardDashboard";
+import CardLastUsers from "@/components/Dashboard/CardLastUsers";
 import CardTopProducts from "@/components/Dashboard/CardTopProducts";
 import ChartDashboard from "@/components/Dashboard/ChartDashboard";
 import SalesIcon from "@/components/icons/SalesIcon";
@@ -45,10 +46,12 @@ const DashboardPage = () => {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         <CardTopProducts />
-        <ChartDashboard />
+        <CardLastUsers />
+        <div>123</div>
       </div>
+      <ChartDashboard />
     </div>
   );
 };
