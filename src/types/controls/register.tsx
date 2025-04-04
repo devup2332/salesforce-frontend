@@ -1,11 +1,11 @@
 import { ComponentProps } from "react";
 import { SvgProps } from "../components/SvgProps";
-import FormField from "@/components/general/FormField";
 import {
   Step1RegisterFields,
   Step2RegisterFields,
   Step3RegisterFields,
 } from "@/schemas/RegisterSchema";
+import FormField from "@/components/global/FormField";
 
 export type Step1RegisterControl = {
   label: string;
