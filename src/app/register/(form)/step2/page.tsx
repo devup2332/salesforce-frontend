@@ -1,7 +1,7 @@
 "use client";
-import FormField from "@/components/general/FormField";
+import FormField from "@/components/global/FormField";
 import ArrowLeft from "@/components/icons/ArrowLeft";
-import { step2Controls } from "@/controls/registerControls";
+import { step2Controls } from "@/consts/controls";
 import {
   Step2RegisterSchema,
   Step2RegisterSchemaType,
@@ -42,15 +42,15 @@ const Step2Page = () => {
   return (
     <form
       onSubmit={handleSubmit(nextStepHandler)}
-      className="w-10/12 gap-4 flex flex-col xl:max-w-[400px]"
+      className="w-10/12 gap-4 flex flex-col xl:max-w-[400px] justify-start"
     >
       <Button
-        className="cursor-pointer hover:bg-bg-2"
+        className="cursor-pointer h-fit w-fit hover:bg-bg-2"
         type="button"
         variant="icon"
         onClick={() => router.back()}
       >
-        <ArrowLeft className="w-6 h-6 text-text-1 stroke-current" />
+        <ArrowLeft className="w-4 h-4 text-text-1 stroke-current" />
       </Button>
       <h1 className="text-text-1 text-3xl font-bold">
         {t("register.steps.2.title")}

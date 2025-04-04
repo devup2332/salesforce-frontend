@@ -42,7 +42,7 @@ const FormField: React.FC<FormFieldProps> = ({
         Icon={Icon}
         inputClassName={cn(
           inputClassName,
-          "placeholder:text-text-2",
+          "text-text-1 placeholder:text-text-2",
           error ? "placeholder:text-alert" : "",
         )}
         className={cn(

@@ -1,14 +1,14 @@
 import "salesforce-lib/dist/index.css";
 import "./globals.css";
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat as Font } from "next/font/google";
 import TranslationProvider from "@/providers/TranslationProvider";
 import ThemeProvider from "@/providers/ThemeProvider";
 import { Toaster } from "sonner";
-import AuthProvider from "@/providers/AuthProvider";
 import { cn } from "@/utils/cn";
+import LoadingProvider from "@/providers/LoadingProvider";
 
-const montserrat = Montserrat({
+const font = Font({
   subsets: ["latin"],
 });
 
@@ -24,15 +24,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={cn(montserrat.className, "bg-bg-1 lg:bg-bg-2 customScroll")}
+      className={cn(font.className, "bg-bg-1 lg:bg-bg-2 customScroll")}
     >
       <body>
         <TranslationProvider>
           <ThemeProvider>
-            <AuthProvider>
+            <LoadingProvider>
               {children}
               <Toaster />
-            </AuthProvider>
+            </LoadingProvider>
           </ThemeProvider>
         </TranslationProvider>
       </body>

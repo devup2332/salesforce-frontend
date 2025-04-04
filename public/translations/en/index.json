@@ -73,7 +73,8 @@
             "placeholder": "email@email.com",
             "errors": {
               "required": "Email is required",
-              "invalid_email": "Email is invalid"
+              "invalid_email": "Email is invalid",
+              "email_in_use": "Email is already in use"
             }
           },
           "firstName": {
@@ -209,13 +210,20 @@
           "button": "Review"
         },
         "topProducts": {
-          "title": "Top Products"
+          "title": "Top Products",
+          "description": "Top products that you have sold in the last month"
         },
         "salesOverview": {
-          "title": "Sales Overview"
+          "title": "Sales Overview",
+          "description": "Sales overview in the last month"
         },
         "lastUsers": {
-          "title": "Last Users"
+          "title": "Last Users",
+          "description": "Last users that have been added to your team"
+        },
+        "invoices": {
+          "title": "Recent Invoices",
+          "description": "Recent invoices that have been generated"
         }
       }
     }

@@ -1,5 +1,5 @@
 "use client";
-import Loader from "@/components/general/Loader";
+import Loader from "@/components/global/Loader";
 import { createClient } from "@/utils/supabase/client";
 import { Session } from "@supabase/supabase-js";
 import { useRouter } from "next/navigation";
@@ -17,14 +17,19 @@ const PublicRouteProvider: React.FC<Props> = ({ children }) => {
   const router = useRouter();
 
   const getSession = async () => {
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-    setLoading(false);
-    if (session) {
-      setSession(session);
-
-      return router.push("/dashboard");
+    try {
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        setSession(session);
+        router.push("/dashboard");
+      }
+    } catch (err) {
+      setLoading(false);
+      console.error("Error fetching session", err);
+    } finally {
+      setLoading(false);
     }
   };
 

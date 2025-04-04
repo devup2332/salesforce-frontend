@@ -1,8 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Button } from "salesforce-lib";
 import ArrowTopRightIcon from "../icons/ArrowTopRightIcon";
 import Image from "next/image";
+import Card from "@/components/global/Card";
 
 const imageUrl =
   "https://oechsle.vteximg.com.br/arquivos/ids/11301225-1000-1000/imageUrl_2.jpg?v=637986370050730000";
@@ -49,21 +49,17 @@ const data: Product[] = [
 const CardTopProducts = () => {
   const { t } = useTranslation();
   return (
-    <div className="bg-bg-1 py-3 rounded-md">
-      <div className="flex px-4 justify-between items-center ">
-        <h1 className="text-lg font-medium text-text-1">
-          {t("home.dashboard.cards.topProducts.title")}
-        </h1>
-        <Button variant="icon" className="hover:bg-bg-2 rounded-full">
-          <ArrowTopRightIcon className="h-5 w-5" />
-        </Button>
-      </div>
-      <div className="grid mt-4">
+    <Card
+      title={t("home.dashboard.cards.topProducts.title")}
+      description={t("home.dashboard.cards.topProducts.description")}
+      Icon={<ArrowTopRightIcon className="w-5 h-5 text-text-1" />}
+    >
+      <div className="mt-4">
         {data.map(({ name, price, category, imageUrl, currency }) => {
           return (
             <div
               key={name}
-              className="flex px-4 py-2 cursor-pointer rounded-md hover:bg-bg-2 items-center justify-between"
+              className="flex py-2 cursor-pointer rounded-md items-center justify-between"
             >
               <div className="flex gap-4 items-start">
                 <Image
@@ -75,10 +71,10 @@ const CardTopProducts = () => {
                 />
                 <div className="text-text-1">
                   <h2 className="text-sm font-medium">{name}</h2>
-                  <p className="text-xs">{category}</p>
+                  <p className="text-xs text-text-2">{category}</p>
                 </div>
               </div>
-              <div className="flex gap-2 font-medium transition-none">
+              <div className="flex gap-1 font-medium transition-none text-sm">
                 <span className="transition-none"> {currency}</span>
                 <span className="transition-none"> {price}</span>
               </div>
@@ -86,7 +82,7 @@ const CardTopProducts = () => {
           );
         })}
       </div>
-    </div>
+    </Card>
   );
 };
 

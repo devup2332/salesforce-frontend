@@ -1,8 +1,8 @@
 "use client";
-import FormField from "@/components/general/FormField";
-import Or from "@/components/general/Or";
+import FormField from "@/components/global/FormField";
+import Or from "@/components/global/Or";
 import GoogleIcon from "@/components/icons/GoogleIcon";
-import { step1controls } from "@/controls/registerControls";
+import { step1controls } from "@/consts/controls";
 import {
   Step1RegisterSchema,
   Step1RegisterSchemaType,
@@ -64,7 +64,7 @@ const Step1 = () => {
         <GoogleIcon />
         <span className="text-text-2">{t("register.buttons.google")}</span>
       </Button>
-      <Or className="bg-bg-1" text={t("register.or")} />
+      <Or className="bg-bg-1 text-sm" text={t("register.or")} />
 
       {step1controls.map((control) => {
         const { placeholder, type, name, label, Icon } = control;
@@ -105,10 +105,10 @@ const Step1 = () => {
         {t("register.steps.1.textButton")}
       </Button>
       <p className="text-text-1 text-sm lg:text-center">
-        {t("register.links.login.text")}{" "}
+        {t("register.links.login.text")}
         <Link
           href="/login"
-          className="font-bold text-primary-900 hover:text-primary-700"
+          className="font-bold text-primary-900 hover:text-primary-700 ml-2"
         >
           {t("register.links.login.link")}
         </Link>

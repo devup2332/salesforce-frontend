@@ -2,10 +2,10 @@ import { create } from "zustand";
 
 type SidebarStore = {
   isOpen: boolean;
-  toggleSidebar: () => void;
+  setSidebarOpen: (isOpen: boolean) => void;
 };
 
 export const useSidebarStore = create<SidebarStore>((set) => ({
   isOpen: false,
-  toggleSidebar: () => set((state) => ({ isOpen: !state.isOpen })),
+  setSidebarOpen: (isOpen) => set(() => ({ isOpen: isOpen })),
 }));

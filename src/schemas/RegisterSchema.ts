@@ -1,3 +1,4 @@
+import { fetchApi } from "@/utils/api/fetch";
 import { z } from "zod";
 
 export const Step1RegisterSchema = z.object({
@@ -8,6 +9,21 @@ export const Step1RegisterSchema = z.object({
     })
     .email({
       message: "invalid_email",
+    })
+    .transform(async (val, ctx) => {
+      // Call an api endpoint to verify if the email is already in use
+
+      const { user } = await fetchApi(`/api/users/validateEmailExist/${val}`, {
+        method: "GET",
+      });
+      if (user) {
+        return ctx.addIssue({
+          code: "custom",
+          fatal: true,
+          message: "email_in_use",
+        });
+      }
+      return val;
     }),
   firstName: z.string().min(1, {
     message: "required",

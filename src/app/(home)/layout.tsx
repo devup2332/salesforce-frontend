@@ -1,6 +1,6 @@
 "use client";
-import Header from "@/components/general/Header";
-import Sidebar from "@/components/general/Sidebar";
+import Header from "@/components/global/Header";
+import Sidebar from "@/components/global/Sidebar";
 import PrivateRouteProvider from "@/providers/PrivateRouteProvider";
 import React from "react";
 
@@ -11,11 +11,13 @@ type Props = {
 const Layout: React.FC<Props> = ({ children }) => {
   return (
     <PrivateRouteProvider>
-      <div className="flex bg-bg-2 flex-1 h-screen">
+      <div className="flex w-screen bg-bg-2 h-screen">
         <Sidebar />
-        <div className="flex flex-col w-full h-full overflow-y-auto sm:pl-[68px] customScroll">
+        <div className="h-full w-screen overflow-y-auto sm:pl-[68px] customScroll">
           <Header />
-          <div className="px-8 py-6">{children}</div>
+          <div className="py-6 px-8 max-w-8xl w-full m-auto 3xl:px-0">
+            {children}
+          </div>
         </div>
       </div>
     </PrivateRouteProvider>

@@ -27,6 +27,7 @@ const RegisterLayout: React.FC<RegisterLayoutProps> = ({ children }) => {
             src="/images/login.webp"
             alt="Register image"
             width={sizeImage}
+            priority
             height={sizeImage}
           />
           <div className="absolute top-0 left-0 w-full h-full flex bg-black/50  flex-col place-content-end p-10 xl:p-14 space-y-[18px]">

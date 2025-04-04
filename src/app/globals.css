@@ -1,10 +1,13 @@
 @import "./theme.css";
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-family: "Montserrat";
 
   --color-primary-100: var(--primary-100);
+  --color-primary-500: var(--primary-500);
   --color-primary-700: var(--primary-700);
   --color-primary-900: var(--primary-900);
 
@@ -22,6 +25,7 @@
 
   --color-stroke-1: var(--stroke-1);
   --color-stroke-2: var(--stroke-2);
+  --color-border-1: var(--border-1);
 
   --text-3xl: 32px;
   --spacing-input: 42px;
@@ -41,5 +45,5 @@ button {
 
 .customScroll {
   scrollbar-width: thin;
-  scrollbar-color: var(--stroke-1) var(--bg-1);
+  scrollbar-color: var(--stroke-1) var(--bg-2);
 }

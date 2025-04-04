@@ -1,11 +1,11 @@
 "use client";
-import Or from "@/components/general/Or";
+import Or from "@/components/global/Or";
 import GoogleIcon from "@/components/icons/GoogleIcon";
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useForm } from "react-hook-form";
 import { Button } from "salesforce-lib";
-import FormField from "@/components/general/FormField";
+import FormField from "@/components/global/FormField";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { cn } from "@/utils/cn";
 import Link from "next/link";
@@ -13,7 +13,7 @@ import Image from "next/image";
 import SunIcon from "@/components/icons/SunIcon";
 import { useTheme } from "@/store/ThemeStore";
 import MoonIcon from "@/components/icons/MoonIcon";
-import { loginControls } from "@/controls/loginControls";
+import { loginControls } from "@/consts/controls";
 import EyeOpen from "@/components/icons/EyeOpen";
 import EyeClosed from "@/components/icons/EyeClosed";
 import { LoginSchema, LoginSchemaType } from "@/schemas/LoginSchema";
@@ -21,10 +21,10 @@ import { fetchApi } from "@/utils/api/fetch";
 import LoaderIcon from "@/components/icons/LoaderIcon";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
-import Toast from "@/components/general/Toast";
-import { sleep } from "@/utils/sleep";
+import Toast from "@/components/global/Toast";
 import { useAuthStore } from "@/store/AuthStore";
 import { signInWithGoogle } from "@/utils/supabase/signWithOAuth";
+import { createClient } from "@/utils/supabase/client";
 
 const sizeImage = 800;
 
@@ -34,6 +34,8 @@ const serverErrors: Record<LoginErrors, string> = {
   invalid_credentials: "login.errors.invalid_credentials",
   server_error: "login.errors.server_error",
 };
+
+const supabase = createClient();
 
 const LoginPage = () => {
   const {
@@ -56,16 +58,16 @@ const LoginPage = () => {
   const loginUser = async (credentials: LoginSchemaType) => {
     try {
       setLoading(true);
-      const { user, error } = await fetchApi("/api/auth/login", {
+      const { message, data } = await fetchApi("/api/auth/login", {
         method: "POST",
         body: JSON.stringify(credentials),
       });
-      await sleep(2000);
-      if (error) {
+
+      if (!data) {
         toast.custom(
           () => (
             <Toast
-              text={t(serverErrors[error.code as LoginErrors])}
+              text={t(serverErrors[message as LoginErrors])}
               type="error"
             />
           ),
@@ -74,15 +76,23 @@ const LoginPage = () => {
             duration: 3000,
           },
         );
-        setLoading(false);
         return;
       }
-      setUser(user);
-      setLoading(false);
-
+      const { refreshToken, accessToken, user } = data;
+      setUser({
+        id: user.id,
+        email: user.email,
+        lastName: user.lastName,
+        firstName: user.firstName,
+        imageUrl: user.imageUrl,
+      });
+      await supabase.auth.setSession({
+        access_token: accessToken,
+        refresh_token: refreshToken,
+      });
       router.push("/dashboard");
     } catch (err) {
-      console.log("here", { err });
+      console.error("here", { err });
       toast.custom(
         () => <Toast text={t(serverErrors.server_error)} type="error" />,
         {
@@ -90,6 +100,7 @@ const LoginPage = () => {
           duration: 3000,
         },
       );
+    } finally {
       setLoading(false);
     }
   };
@@ -100,7 +111,7 @@ const LoginPage = () => {
 
   return (
     <>
-      <div className="bg-bg-1 lg:bg-bg-2 text- h-screen grid place-items-center text-sm overflow-y-scroll">
+      <div className="bg-bg-1 lg:bg-bg-2 text- h-screen grid place-items-center text-sm overflow-y-auto">
         <div className="w-11/12 max-w-md lg:flex lg:flex-row-reverse lg:max-w-5xl xl:max-w-[1218px] rounded-xl overflow-hidden lg:bg-bg-1 lg:h-[600px] 2xl:h-[710px]">
           <div className="hidden lg:flex w-full relative overflow-hidden rounded-l-6xl">
             <Image
@@ -113,24 +124,26 @@ const LoginPage = () => {
             />
             <div className="absolute top-0 left-0 w-full h-full flex bg-black/50  flex-col place-content-end p-10 xl:p-14 space-y-[18px]">
               <div className="flex items-center">
-                <button
-                  className="text-white cursor-pointer p-4"
+                <Button
+                  className="text-white cursor-pointer p-4 hover:bg-black/50"
+                  variant="icon"
                   onClick={() =>
                     changeLanguage(language === "en" ? "es" : "en")
                   }
                 >
                   {language === "en" ? "es" : "en"}
-                </button>
-                <button
-                  className="p-4 cursor-pointer"
+                </Button>
+                <Button
+                  className="p-0 cursor-pointer hover:bg-black/50"
+                  variant="icon"
                   onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
                 >
                   {theme === "dark" ? (
-                    <SunIcon className="stroke-current text-white cursor-pointer" />
+                    <SunIcon className="stroke-current w-5 h-5 text-white cursor-pointer" />
                   ) : (
-                    <MoonIcon className="stroke-current text-white cursor-pointer" />
+                    <MoonIcon className="stroke-current w-5 h-5 text-white cursor-pointer" />
                   )}
-                </button>
+                </Button>
               </div>
               <h2 className="text-white text-4xl font-semibold">
                 {t("login.sideImage.title.greeting")}{" "}
@@ -152,12 +165,10 @@ const LoginPage = () => {
                 {t("login.title")}
               </h1>
               <Button
-                variant="outlined"
+                variant="filled"
                 type="button"
-                className="border-1 flex gap-4 w-full border-stroke-1 justify-center items-center h-input hover:bg-bg-2"
-                onClick={() => {
-                  googleLogin();
-                }}
+                className="border-[1px] border-solid flex gap-4 w-full border-stroke-2 bg-transparent justify-center items-center h-input hover:bg-bg-2"
+                onClick={googleLogin}
               >
                 <GoogleIcon />
                 <span className="text-text-2">{t("login.buttons.google")}</span>
@@ -233,7 +244,7 @@ const LoginPage = () => {
                 type="submit"
                 variant="filled"
                 disabled={loading}
-                className="w-full bg-primary-900 h-input hover:bg-primary-700 gap-4"
+                className="w-full flex justify-center items-center bg-primary-900 h-input hover:bg-primary-700 gap-4"
               >
                 {loading && (
                   <LoaderIcon className="h-6 w-6 text-text-3 stroke-current animate-spin" />
@@ -244,7 +255,7 @@ const LoginPage = () => {
                 {t("login.links.createAccount.text")}{" "}
                 <Link
                   href="/register/step1"
-                  className="font-bold text-primary-900 hover:text-primary-700"
+                  className="font-bold ml-1 text-primary-900 hover:text-primary-700"
                 >
                   {t("login.links.createAccount.link")}
                 </Link>

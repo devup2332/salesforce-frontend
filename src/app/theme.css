@@ -1,6 +1,7 @@
 :root {
   /* Light theme */
   --light-primary-100: #f4f4f4;
+  --light-primary-500: #3b82f6;
   --light-primary-700: #688aff;
   --light-primary-900: #235ef0;
 
@@ -10,17 +11,19 @@
 
   --light-text-1: #000000;
   --light-text-2: #6d758a;
-  --light-text-3: #000000;
+  --light-text-3: #ffffff;
 
   --light-bg-1: #ffffff;
-  --light-bg-2: #f1f2f8;
-  --light-bg-3: rgba(0, 0, 0, 0.5);
+  --light-bg-2: #f2f4f7;
+  --light-bg-3: #e6eaf2;
 
   --light-stroke-1: #d9ddef;
   --light-stroke-2: #e2e5f1;
+  --light-border-1: #e6eaf0;
 
   /* Dark theme */
   --dark-primary-100: #edf2ff;
+  --dark-primary-500: #3b82f6;
   --dark-primary-700: #92b2ff;
   --dark-primary-900: #0037bf;
 
@@ -32,17 +35,19 @@
   --dark-text-2: #959ab4;
   --dark-text-3: #ffffff;
 
-  --dark-bg-1: #121317;
-  --dark-bg-2: #080809;
+  --dark-bg-1: #16181f;
+  --dark-bg-2: #0a0b0f;
   --dark-bg-3: rgba(0, 0, 0, 0.5);
 
   --dark-stroke-1: #434b57;
   --dark-stroke-2: #23272d;
+  --dark-border-1: #232529;
 }
 
 html.light {
   --primary-100: var(--light-primary-100);
   --primary-700: var(--light-primary-700);
+  --primary-500: var(--light-primary-500);
   --primary-900: var(--light-primary-900);
 
   --alert: var(--light-alert);
@@ -59,11 +64,14 @@ html.light {
 
   --stroke-1: var(--light-stroke-1);
   --stroke-2: var(--light-stroke-2);
+
+  --border-1: var(--light-border-1);
   color-scheme: light;
 }
 
 html.dark {
   --primary-100: var(--dark-primary-100);
+  --primary-500: var(--dark-primary-500);
   --primary-700: var(--dark-primary-700);
   --primary-900: var(--dark-primary-900);
 
@@ -81,5 +89,7 @@ html.dark {
 
   --stroke-1: var(--dark-stroke-1);
   --stroke-2: var(--dark-stroke-2);
+
+  --border-1: var(--dark-border-1);
   color-scheme: dark;
 }

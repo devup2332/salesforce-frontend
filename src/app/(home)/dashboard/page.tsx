@@ -1,57 +1,66 @@
 "use client";
-import CardDashboard from "@/components/Dashboard/CardDashboard";
+import CardInvoices from "@/components/Dashboard/CardInvoices";
 import CardLastUsers from "@/components/Dashboard/CardLastUsers";
 import CardTopProducts from "@/components/Dashboard/CardTopProducts";
 import ChartDashboard from "@/components/Dashboard/ChartDashboard";
+import Card from "@/components/global/Card";
 import SalesIcon from "@/components/icons/SalesIcon";
 import React from "react";
 import { useTranslation } from "react-i18next";
 
 const DashboardPage = () => {
   const { t } = useTranslation();
+  const stadistics = {
+    orders: 34,
+    users: 12,
+    reports: 102,
+    items: 504,
+  };
   return (
     <div className="max-w-8xl m-auto flex-1 grid gap-4">
       <div className="grid sm:grid-cols-2 gap-4 lg:grid-cols-4">
-        <CardDashboard
-          className="hover:bg-primary-900"
-          amount={34}
-          textButton={t("home.dashboard.cards.orders.button")}
-          textDescription={t("home.dashboard.cards.orders.description")}
-          Icon={SalesIcon}
+        <Card
           title={t("home.dashboard.cards.orders.title")}
-        />
-        <CardDashboard
-          className="hover:bg-primary-900"
-          amount={12}
-          textButton={t("home.dashboard.cards.users.button")}
-          textDescription={t("home.dashboard.cards.users.description")}
-          Icon={SalesIcon}
+          description={t("home.dashboard.cards.orders.description")}
+          bottomDescription
+          Icon={<SalesIcon className="w-5 h-5 text-text-1" />}
+        >
+          <p className="text-[2.5rem] font-extrabold">{stadistics.orders}</p>
+        </Card>
+        <Card
           title={t("home.dashboard.cards.users.title")}
-        />
-        <CardDashboard
-          className="hover:bg-primary-900"
-          amount={90}
-          textButton={t("home.dashboard.cards.reports.button")}
-          textDescription={t("home.dashboard.cards.reports.description")}
-          Icon={SalesIcon}
+          description={t("home.dashboard.cards.users.description")}
+          bottomDescription
+          Icon={<SalesIcon className="w-5 h-5 text-text-1" />}
+        >
+          <p className="text-[2.5rem] font-extrabold">{stadistics.users}</p>
+        </Card>
+        <Card
+          description={t("home.dashboard.cards.reports.description")}
           title={t("home.dashboard.cards.reports.title")}
-        />
-        <CardDashboard
-          className="hover:bg-primary-900"
-          amount={320}
-          textButton={t("home.dashboard.cards.items.button")}
-          textDescription={t("home.dashboard.cards.items.description")}
-          Icon={SalesIcon}
+          bottomDescription
+          Icon={<SalesIcon className="w-5 h-5 text-text-1" />}
+        >
+          <p className="text-[2.5rem] font-extrabold">{stadistics.reports}</p>
+        </Card>
+        <Card
           title={t("home.dashboard.cards.items.title")}
-        />
+          description={t("home.dashboard.cards.items.description")}
+          bottomDescription
+          Icon={<SalesIcon className="w-5 h-5 text-text-1" />}
+        >
+          <p className="text-[2.5rem] font-extrabold">{stadistics.items}</p>
+        </Card>
       </div>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
         <CardTopProducts />
         <CardLastUsers />
-        <div>123</div>
+        <CardInvoices />
       </div>
-      <ChartDashboard />
+      <div className="grid">
+        <ChartDashboard />
+      </div>
     </div>
   );
 };

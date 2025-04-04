@@ -1,11 +1,11 @@
 "use client";
-import FormField from "@/components/general/FormField";
-import Toast from "@/components/general/Toast";
+import FormField from "@/components/global/FormField";
+import Toast from "@/components/global/Toast";
 import ArrowLeft from "@/components/icons/ArrowLeft";
 import EyeClosed from "@/components/icons/EyeClosed";
 import EyeOpen from "@/components/icons/EyeOpen";
 import LoaderIcon from "@/components/icons/LoaderIcon";
-import { step3Controls } from "@/controls/registerControls";
+import { step3Controls } from "@/consts/controls";
 import {
   Step3RegisterSchema,
   Step3RegisterSchemaType,
@@ -14,6 +14,7 @@ import { useAuthStore } from "@/store/AuthStore";
 import { useRegisterStore } from "@/store/RegisterStore";
 import { fetchApi } from "@/utils/api/fetch";
 import { cn } from "@/utils/cn";
+import { createClient } from "@/utils/supabase/client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -24,6 +25,7 @@ import { toast } from "sonner";
 
 type RegisterErrors = "invalid_credentials" | "server_error";
 
+const supabase = createClient();
 const serverErrors: Record<RegisterErrors, string> = {
   invalid_credentials: "login.errors.invalid_credentials",
   server_error: "login.errors.server_error",
@@ -50,18 +52,33 @@ const Step3 = () => {
         ...data,
         password: info.password,
       };
-      const { user } = await fetchApi("/api/auth/register", {
-        method: "POST",
-        body: JSON.stringify({
-          email: body.email,
-          password: body.password,
-        }),
+      const { data: response } = await fetchApi(
+        "/api/auth/registerUserWithCompany",
+        {
+          method: "POST",
+          body: JSON.stringify(body),
+        },
+      );
+      const { accessToken, refreshToken, profile } = response;
+      const {
+        data: { user },
+      } = await supabase.auth.setSession({
+        access_token: accessToken as string,
+        refresh_token: refreshToken as string,
       });
-      setUser(user);
+      if (!user) {
+        throw new Error("User not found");
+      }
+      setUser({
+        id: profile.id,
+        email: profile.email,
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+      });
       setLoading(false);
       router.push("/dashboard");
     } catch (err) {
-      console.log({ err });
+      console.error({ err });
       toast.custom(
         () => <Toast type="error" text={t(serverErrors.server_error)} />,
         {
@@ -77,12 +94,12 @@ const Step3 = () => {
       className="grid gap-6 px-6 w-full lg:px-16 lg:gap-4 xl:px-24"
     >
       <Button
-        className="cursor-pointer hover:bg-bg-2"
+        className="cursor-pointer h-fit w-fit hover:bg-bg-2"
         type="button"
         variant="icon"
         onClick={() => router.back()}
       >
-        <ArrowLeft className="w-6 h-6 text-text-1 stroke-current" />
+        <ArrowLeft className="w-4 h-4 text-text-1 stroke-current" />
       </Button>
       <h1 className="text-text-1 text-3xl font-bold w-7/12">
         {t("register.steps.3.title")}

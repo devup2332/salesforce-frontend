@@ -13,7 +13,6 @@ interface Props extends ComponentProps<"div"> {
 
 const CardDashboard: React.FC<Props> = ({
   className,
-  textButton,
   Icon,
   textDescription,
   amount,
@@ -23,35 +22,23 @@ const CardDashboard: React.FC<Props> = ({
   return (
     <div
       className={cn(
-        "rounded-md bg-bg-1 py-3 px-4 grid gap-3 group hover:transition-colors cursor-pointer",
+        "rounded-md bg-bg-1 py-3 px-4 grid  group cursor-pointer transition-[background-color] shadow-sm border-[#94a3b8]/40 border-[1px]",
         className,
       )}
       {...rest}
     >
       <div className="flex justify-between items-center">
-        <h1 className="text-text-1 text-lg font-medium group-hover:text-white">
-          {title}
-        </h1>
+        <h1 className="text-text-1 text-lg font-medium">{title}</h1>
 
         <Button
           variant="icon"
-          className="bg-bg-2 rounded-full w-10 h-10 group-hover:bg-white transition-none group-hover:transition"
+          className="bg-bg-2 rounded-full w-10 h-10 transition-none"
         >
-          <Icon className="w-4 h-4 group-hover:text-primary-900" />
+          <Icon className="w-4 h-4" />
         </Button>
       </div>
-      <span className="text-[40px] text-text-1 font-extrabold group-hover:text-white">
-        {amount}
-      </span>
-      <p className="group-hover:text-white text-xs transition-none">
-        {textDescription}
-      </p>
-      <Button
-        variant="filled"
-        className="w-full text-sm h-input bg-bg-2 text-text-1 group-hover:text-primary-900 group-hover:bg-white transition-none group-hover:transition"
-      >
-        {textButton}
-      </Button>
+      <span className="text-[40px] text-text-1 font-extrabold">{amount}</span>
+      <p className="text-xs transition-none">{textDescription}</p>
     </div>
   );
 };

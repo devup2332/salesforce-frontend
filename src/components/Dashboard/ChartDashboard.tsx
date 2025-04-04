@@ -8,61 +8,10 @@ import {
   Area,
   CartesianGrid,
 } from "recharts";
-import { Button } from "salesforce-lib";
 import ArrowTopRightIcon from "../icons/ArrowTopRightIcon";
 import { useTranslation } from "react-i18next";
-
-const data = [
-  {
-    name: "Jan",
-    Sales: 4000,
-  },
-  {
-    name: "Feb",
-    Sales: 3000,
-  },
-  {
-    name: "Mar",
-    Sales: 2000,
-  },
-  {
-    name: "Apr",
-    Sales: 2780,
-  },
-  {
-    name: "May",
-    Sales: 1890,
-  },
-  {
-    name: "Jun",
-    Sales: 2390,
-  },
-
-  {
-    name: "Jul",
-    Sales: 3490,
-  },
-  {
-    name: "Aug",
-    Sales: 3490,
-  },
-  {
-    name: "Sep",
-    Sales: 6490,
-  },
-  {
-    name: "Oct",
-    Sales: 2490,
-  },
-  {
-    name: "Nov",
-    Sales: 8490,
-  },
-  {
-    name: "Dec",
-    Sales: 1490,
-  },
-];
+import Card from "@/components/global/Card";
+import { salesOverview } from "@/consts/sales";
 
 type TickProps = {
   x: number;
@@ -98,21 +47,20 @@ const Tick: React.FC<TickProps> = ({
 const ChartDashboard = () => {
   const { t } = useTranslation();
   return (
-    <div className="py-3 px-4 bg-bg-1 rounded-md h-fit overflow-x-auto customScroll">
-      <div className="flex justify-between items-center ">
-        <h1 className="text-lg font-medium text-text-1">
-          {t("home.dashboard.cards.salesOverview.title")}
-        </h1>
-        <Button variant="icon" className="hover:bg-bg-2 rounded-full">
-          <ArrowTopRightIcon className="h-5 w-5" />
-        </Button>
-      </div>
-      <div className="w-5xl lg:w-full h-96 mt-4">
+    <Card
+      title={t("home.dashboard.cards.salesOverview.title")}
+      description={t("home.dashboard.cards.salesOverview.description")}
+      Icon={
+        <ArrowTopRightIcon className="h-5 w-5 text-text-1 stroke-current" />
+      }
+    >
+      <div className="w-5xl lg:w-full h-80 mt-4">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
-            data={data}
+            data={salesOverview}
             margin={{
               right: 30,
+              top: 24,
             }}
           >
             <XAxis
@@ -137,7 +85,7 @@ const ChartDashboard = () => {
             <CartesianGrid
               vertical={false}
               strokeWidth={1}
-              className="stroke-stroke-1"
+              className="stroke-stroke-1 "
             />
             <YAxis
               axisLine={false}
@@ -155,13 +103,15 @@ const ChartDashboard = () => {
             <Tooltip
               contentStyle={{
                 background: "var(--bg-1)",
-                boxShadow: "0px 4px 20px rgba(0, 0, 0, 0.1)",
-                borderRadius: "6px",
-                border: "none",
+                fontSize: "12px",
+                border: "1px solid var(--border-1)",
+                borderRadius: "12px",
+                boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.05)",
               }}
+              labelClassName="font-medium"
               labelStyle={{
                 color: "var(--text-1)",
-                fontWeight: "normal",
+                fontSize: "14px",
               }}
             />
             <Area
@@ -180,7 +130,7 @@ const ChartDashboard = () => {
           </AreaChart>
         </ResponsiveContainer>
       </div>
-    </div>
+    </Card>
   );
 };
 
